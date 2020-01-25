@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-deb.sh
-version="0.0.8"
-# 2019-03-09
+version="0.0.9"
+# 2020-01-25
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-deb.sh
 
 # BEGIN LICENSE
@@ -89,6 +89,7 @@ install_deps () {
                         gstreamer1.0-plugins-ugly       \
                         gstreamer1.0-gtk3               \
                         gstreamer1.0-libav              \
+                        mediainfo                       \
                         mediainfo-gui                   \
                         mpv                             \
                         git; do
