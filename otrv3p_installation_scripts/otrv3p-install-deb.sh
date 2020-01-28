@@ -91,6 +91,7 @@ install_deps () {
                         gstreamer1.0-libav              \
                         mediainfo                       \
                         mediainfo-gui                   \
+                        mkvtoolnix                      \
                         mpv                             \
                         git; do
             ## Only install packages if they are not already installed
