@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-arch.sh
-version="0.0.4"
-# 2019-03-09
+version="0.0.5"
+# 2020-01-28
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-arch.sh
 
 # BEGIN LICENSE
@@ -85,7 +85,11 @@ install_deps () {
                         gst-plugins-bad \
                         gst-plugins-ugly \
                         gst-libav \
+                        ffmpeg \
+                        ffms2 \
+                        mediainfo \
                         mediainfo-gui \
+                        mkvtoolnix-cli
                         mpv \
                         git; do
             ## Only install packages if they are not already installed
