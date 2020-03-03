@@ -3,7 +3,7 @@
 # otrv3p-install-opensuse.sh
 version="0.0.4"
 # 2020-03-03
-# https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-arch.sh
+# https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
 # BEGIN LICENSE
 # This is free and unencumbered software released into the public domain.
