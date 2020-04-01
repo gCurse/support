@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-deb.sh
-version="0.1.0"
-# 2020-01-28
+version="0.1.1"
+# 2020-03-18
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-deb.sh
 
 # BEGIN LICENSE
 # This is free and unencumbered software released into the public domain.
-# 
+#
 # Anyone is free to copy, modify, publish, use, compile, sell, or
 # distribute this software, either in source code form or as a compiled
 # binary, for any purpose, commercial or non-commercial, and by any
 # means.
-# 
+#
 # In jurisdictions that recognize copyright laws, the author or authors
 # of this software dedicate any and all copyright interest in the
 # software to the public domain. We make this dedication for the benefit
@@ -20,7 +20,7 @@ version="0.1.0"
 # successors. We intend this dedication to be an overt act of
 # relinquishment in perpetuity of all present and future rights to this
 # software under copyright law.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -28,7 +28,7 @@ version="0.1.0"
 # OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
-# 
+#
 # For more information, please refer to <http://unlicense.org/>
 # END LICENSE
 
@@ -72,29 +72,30 @@ install_deps () {
         if [ ! -e /tmp/otrv3p-install.log ]; then touch /tmp/otrv3p-install.log; fi
         chown root /tmp/otrv3p-install.log && chmod 666 /tmp/otrv3p-install.log
         echo "otrv3p:install_deps: Installiere Abhängigkeiten" | tee -a /tmp/otrv3p-install.log
-        for package in  python3-xdg                     \
-                        python3-gst-1.0                 \
+        for package in  ffmpeg                          \
+                        ffmsindex                       \
                         gir1.2-gstreamer-1.0            \
-                        python3-gi-cairo                \
-                        python3-cairo                   \
-                        python3-crypto                  \
-                        python3-requests                \
-                        python3-pip                     \
-                        gstreamer1.0-x                  \
-                        gstreamer1.0-tools              \
+                        gir1.2-gtk-3.0                  \
+                        gstreamer1.0-gtk3               \
+                        gstreamer1.0-libav              \
+                        gstreamer1.0-plugins-bad        \
                         gstreamer1.0-plugins-base       \
                         gstreamer1.0-plugins-base-apps  \
                         gstreamer1.0-plugins-good       \
-                        gstreamer1.0-plugins-bad        \
                         gstreamer1.0-plugins-ugly       \
-                        gstreamer1.0-gtk3               \
-                        gstreamer1.0-libav              \
-                        ffmpeg                          \
-                        ffmsindex                       \
+                        gstreamer1.0-tools              \
+                        gstreamer1.0-x                  \
                         mediainfo                       \
                         mediainfo-gui                   \
                         mkvtoolnix                      \
                         mpv                             \
+                        python3-cairo                   \
+                        python3-crypto                  \
+                        python3-gi-cairo                \
+                        python3-gst-1.0                 \
+                        python3-pip                     \
+                        python3-requests                \
+                        python3-xdg                     \
                         git; do
             ## Only install packages if they are not already installed
             ## dkpg -s <packagename> returns 0 if package is installed else 1
@@ -178,6 +179,7 @@ echo "otrv3p: Start $0 prog $myhome" | tee -a /tmp/otrv3p-install.log
 "$0" prog #$myhome
 clone=$(cat /tmp/otrv3pCloneYesNo)
 rm /tmp/otrv3pCloneYesNo
+echo -e '\n\nPlease report any issues at https://github.com/EinApfelBaum/otr-verwaltung3p/issues'
 # check for wine and hint
 #~ echo "otrv3p: checking for wine" | tee -a /tmp/otrv3p-install.log
 #~ which wine > /dev/null 2>&1

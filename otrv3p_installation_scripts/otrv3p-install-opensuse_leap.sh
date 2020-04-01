@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-opensuse.sh
-version="0.0.4"
-# 2020-03-03
+version="0.0.5"
+# 2020-03-18
 # https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
 # BEGIN LICENSE
 # This is free and unencumbered software released into the public domain.
-# 
+#
 # Anyone is free to copy, modify, publish, use, compile, sell, or
 # distribute this software, either in source code form or as a compiled
 # binary, for any purpose, commercial or non-commercial, and by any
 # means.
-# 
+#
 # In jurisdictions that recognize copyright laws, the author or authors
 # of this software dedicate any and all copyright interest in the
 # software to the public domain. We make this dedication for the benefit
@@ -20,7 +20,7 @@ version="0.0.4"
 # successors. We intend this dedication to be an overt act of
 # relinquishment in perpetuity of all present and future rights to this
 # software under copyright law.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -28,7 +28,7 @@ version="0.0.4"
 # OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
-# 
+#
 # For more information, please refer to <http://unlicense.org/>
 # END LICENSE
 
@@ -73,29 +73,33 @@ install_deps () {
         chown root /tmp/otrv3p-install.log && chmod 666 /tmp/otrv3p-install.log
         echo "otrv3p:install_deps: Installiere Abhängigkeiten" | tee -a /tmp/otrv3p-install.log
 
-        for package in  xdg-user-dirs-gtk                    \
-                        typelib-1_0-Gtk-3_0                  \
-                        typelib-1_0-Gst-1_0                  \
-                        typelib-1_0-GstVideo-1_0             \
-                        typelib-1_0-GstPlayer-1_0            \
-                        typelib-1_0-GstPbutils-1_0           \
-                        gstreamer-plugin-python              \
-                        python3-gobject                      \
-                        python3-gobject-Gdk                  \
-                        python3-gobject-cairo                \
-                        python3-dbus-python                  \
-                        python3-cairo                        \
-                        python3-requests                     \
-                        python3-pycrypto                     \
-                        python3-pip                          \
-                        gstreamer-plugins-base               \
-                        gstreamer-plugins-good               \
-                        gstreamer-plugins-bad                \
-                        gstreamer-plugins-ugly               \
-                        gstreamer-plugins-libav              \
-                        gstreamer-utils                      \
-                        mediainfo-gui                        \
-                        mpv                                  \
+        for package in  ffmpeg-3                        \
+                        ffmsindex                       \
+                        gstreamer-plugin-python         \
+                        gstreamer-plugins-bad           \
+                        gstreamer-plugins-base          \
+                        gstreamer-plugins-good          \
+                        gstreamer-plugins-libav         \
+                        gstreamer-plugins-ugly          \
+                        gstreamer-utils                 \
+                        mediainfo                       \
+                        mediainfo-gui                   \
+                        mkvtoolnix                      \
+                        mpv                             \
+                        python3-cairo                   \
+                        python3-dbus-python             \
+                        python3-gobject                 \
+                        python3-gobject-cairo           \
+                        python3-gobject-Gdk             \
+                        python3-pip                     \
+                        python3-pycrypto                \
+                        python3-requests                \
+                        typelib-1_0-Gst-1_0             \
+                        typelib-1_0-GstPbutils-1_0      \
+                        typelib-1_0-GstPlayer-1_0       \
+                        typelib-1_0-GstVideo-1_0        \
+                        typelib-1_0-Gtk-3_0             \
+                        xdg-user-dirs-gtk               \
                         git-core; do
             ## Only install packages if they are not already installed
             rpm -q "$package" > /dev/null 2>&1 || zypper --non-interactive install "$package" | tee -a /tmp/otrv3p-install.log
@@ -194,12 +198,13 @@ fi
 
 # Recursive call
 echo "otrv3p: Start sudo $0 deps" | tee -a /tmp/otrv3p-install.log
-sudo "$0" deps #$HOME
+sudo "$0" deps # $HOME
 # Recursive call
 echo "otrv3p: Start $0 prog" | tee -a /tmp/otrv3p-install.log
-"$0" prog #$HOME
+"$0" prog # $HOME
 clone=$(cat /tmp/otrv3pCloneYesNo)
 rm /tmp/otrv3pCloneYesNo
+echo -e '\n\nPlease report any issues at https://github.com/EinApfelBaum/otr-verwaltung3p/issues'
 #~ check for wine and hint
 #~ echo "otrv3p: checking for wine" | tee -a /tmp/otrv3p-install.log
 #~ which wine > /dev/null 2>&1
@@ -215,4 +220,4 @@ rm /tmp/otrv3pCloneYesNo
         #~ echo "wine wird nicht installiert."
     #~ fi
 #~ fi
- 
+
