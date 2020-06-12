@@ -6,6 +6,10 @@ then
     echo -e 'Homebrew is not installed.\nSee https://brew.sh/ how to install homebrew.\nExiting.'
     exit 1
 else
+    echo 'This installation will be at best experimental. There is not much chance I can provide '
+    echo 'in-depth help, but I might try :)'
+    echo 'Please report problems at https://github.com/gCurse/support/issues'
+
     brew install python3 pygobject3 gtk+3 adwaita-icon-theme gstreamer \
                  gst-plugins-base gst-plugins-good gst-plugins-bad \
                  ffmpeg ffms2 mkvtoolnix mediainfo
