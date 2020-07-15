@@ -59,7 +59,7 @@ GenericName[en]=Management of OTR-Files
 Comment=Dateien von onlinetvrecorder.com verwalten: Schneiden, Schnitte betrachten, Cutlists bewerten...
 Comment[en]=Manage files from onlinetvrecorder.com : decode, cut, review cuts, rate cutlists...
 Categories=AudioVideo;AudioVideoEditing;
-Exec=$HOME/otr-verwaltung3p/bin/otrverwaltung
+Exec=$HOME/otr-verwaltung3p/bin/otrverwaltung3p
 Terminal=0
 Icon=$HOME/otr-verwaltung3p/data/media/icon.png
 
@@ -99,7 +99,8 @@ install_deps () {
                         typelib-1_0-GstVideo-1_0        \
                         typelib-1_0-Gtk-3_0             \
                         xdg-user-dirs-gtk               \
-                        git-core; do
+                        git-core                        \
+                        x264; do
             ## Only install packages if they are not already installed
             rpm -q "$package" > /dev/null 2>&1 || zypper --non-interactive install "$package" | tee -a /tmp/otrv3p-install.log
         done
@@ -119,12 +120,15 @@ install_otrv3p_git () {
             echo -e "otrv3p:install_otrv3p_git: Das Verzeichnis $HOME/otr-verwaltung3p existiert. Das Repo wird nicht geklont." | tee -a /tmp/otrv3p-install.log
             cd otr-verwaltung3p
             git checkout --track origin/development
+            echo -e "otrv3p:install_otrv3p_git: Bestehendes Repo wurde auf den development-Branch umgestellt." | tee -a /tmp/otrv3p-install.log
+            git pull
             cd ..
             echo "no" > /tmp/otrv3pCloneYesNo
         else
             git clone https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
             cd otr-verwaltung3p
             git checkout --track origin/development 2>&1 | tee -a /tmp/otrv3p-install.log
+            git pull
             cd ..
             echo "yes" > /tmp/otrv3pCloneYesNo
         fi

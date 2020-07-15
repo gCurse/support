@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-deb-development.sh
-version="0.1.0"
-# 2020-03-18
+version="0.1.1"
+# 2020-07-15
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-deb.sh
 
 # BEGIN LICENSE
@@ -59,7 +59,7 @@ GenericName[en]=Management of OTR-Files
 Comment=Dateien von onlinetvrecorder.com verwalten: Schneiden, Schnitte betrachten, Cutlists bewerten...
 Comment[en]=Manage files from onlinetvrecorder.com : decode, cut, review cuts, rate cutlists...
 Categories=AudioVideo;AudioVideoEditing;
-Exec=$HOME/otr-verwaltung3p/bin/otrverwaltung
+Exec=$HOME/otr-verwaltung3p/bin/otrverwaltung3p
 Terminal=0
 Icon=$HOME/otr-verwaltung3p/data/media/icon.png
 
@@ -96,7 +96,8 @@ install_deps () {
                         python3-gst-1.0                 \
                         python3-requests                \
                         python3-xdg                     \
-                        git; do
+                        git                             \
+                        x264; do
             ## Only install packages if they are not already installed
             ## dkpg -s <packagename> returns 0 if package is installed else 1
             dpkg -s "$package" > /dev/null 2>&1 || apt-get -qq -y install "$package" 2>&1 | grep -ve "Preparing to unpack.*" | tee -a /tmp/otrv3p-install.log
@@ -117,12 +118,15 @@ install_otrv3p_git () {
             echo -e "otrv3p:install_otrv3p_git: Das Verzeichnis $HOME/otr-verwaltung3p existiert. Das Repo wird nicht geklont." | tee -a /tmp/otrv3p-install.log
             cd otr-verwaltung3p
             git checkout --track origin/development 2>&1 | tee -a /tmp/otrv3p-install.log
+            git pull
+            echo -e "otrv3p:install_otrv3p_git: Bestehendes Repo wurde auf den development-Branch umgestellt." | tee -a /tmp/otrv3p-install.log
             cd ..
             echo "no" > /tmp/otrv3pCloneYesNo
         else
             git clone https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
             cd otr-verwaltung3p
             git checkout --track origin/development 2>&1 | tee -a /tmp/otrv3p-install.log
+            git pull
             cd ..
             echo "yes" > /tmp/otrv3pCloneYesNo
         fi
