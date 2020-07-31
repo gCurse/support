@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-deb-development.sh
-version="0.1.1"
-# 2020-07-15
+version="0.1.2"
+# 2020-07-31
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-deb.sh
 
 # BEGIN LICENSE
@@ -123,11 +123,8 @@ install_otrv3p_git () {
             cd ..
             echo "no" > /tmp/otrv3pCloneYesNo
         else
-            git clone https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
-            cd otr-verwaltung3p
-            git checkout --track origin/development 2>&1 | tee -a /tmp/otrv3p-install.log
-            git pull
-            cd ..
+            git clone --branch development --single-branch --shallow-since=2020-02-14 \
+                      https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
             echo "yes" > /tmp/otrv3pCloneYesNo
         fi
         mkdir -p $HOME/.local/share/applications 2>&1 | tee -a /tmp/otrv3p-install.log

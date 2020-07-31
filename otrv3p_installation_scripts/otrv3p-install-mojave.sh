@@ -18,7 +18,7 @@ else
     echo -e 'Now all necessary dependencies should have been installed.'
     echo -e 'Now run:'
     echo
-    echo -e 'git clone --branch development --single-branch https://github.com/EinApfelBaum/otr-verwaltung3p.git'
+    echo -e 'git clone --branch development --single-branch --shallow-since=2020-02-14 https://github.com/EinApfelBaum/otr-verwaltung3p.git'
     echo
     echo -e 'in the parent directory you would like to host otr-verwaltung3p.'
     echo -e 'Start the program with the full path (eg. ~/otr-verwaltung3p/bin/otrverwaltung3p)'

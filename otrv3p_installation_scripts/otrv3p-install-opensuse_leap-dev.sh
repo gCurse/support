@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-opensuse.sh
-version="0.0.5"
-# 2020-03-18
+version="0.0.6"
+# 2020-07-31
 # https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
 # BEGIN LICENSE
@@ -125,11 +125,8 @@ install_otrv3p_git () {
             cd ..
             echo "no" > /tmp/otrv3pCloneYesNo
         else
-            git clone https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
-            cd otr-verwaltung3p
-            git checkout --track origin/development 2>&1 | tee -a /tmp/otrv3p-install.log
-            git pull
-            cd ..
+            git clone --branch development --single-branch --shallow-since=2020-02-14 \
+                      https://github.com/EinApfelBaum/otr-verwaltung3p.git 2>&1 | tee -a /tmp/otrv3p-install.log
             echo "yes" > /tmp/otrv3pCloneYesNo
         fi
         mkdir -p $HOME/.local/share/applications 2>&1 | tee -a /tmp/otrv3p-install.log
