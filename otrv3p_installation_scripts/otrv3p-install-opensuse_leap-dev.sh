@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-opensuse.sh
-version="0.0.6"
+version="0.0.7"
 # 2020-07-31
 # https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
@@ -152,7 +152,7 @@ usage () {
 
 check_for_packman () {
     check_pack=$(zypper repos | grep -i packman | grep -Ei "Ja|Yes")
-    if [ -z $check_pack ]; then
+    if [ -z "$check_pack" ]; then
         # packman repo not active
         echo -e "\n${RED}"
         echo -e "ACHTUNG: Das Packman Repository wurde nicht gefunden oder ist nicht aktiv!"
