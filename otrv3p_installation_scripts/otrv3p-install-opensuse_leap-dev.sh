@@ -92,6 +92,7 @@ install_deps () {
                         python3-gobject-cairo           \
                         python3-gobject-Gdk             \
                         python3-pip                     \
+                        python3-psutil                  \
                         python3-requests                \
                         typelib-1_0-Gst-1_0             \
                         typelib-1_0-GstPbutils-1_0      \
