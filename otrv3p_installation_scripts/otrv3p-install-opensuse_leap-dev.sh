@@ -2,7 +2,7 @@
 
 # otrv3p-install-opensuse.sh
 version="0.0.7"
-# 2020-07-31
+# 2021-01-05
 # https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
 # BEGIN LICENSE

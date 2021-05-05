@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-opensuse.sh
-version="0.0.5"
-# 2020-03-18
+version="0.0.6"
+# 2021-01-05
 # https://raw.githubusercontent.com/gCurse/support/master/otrv3p_installation_scripts/otrv3p-install-opensuse_leap.sh
 
 # BEGIN LICENSE
@@ -92,6 +92,7 @@ install_deps () {
                         python3-gobject-cairo           \
                         python3-gobject-Gdk             \
                         python3-pip                     \
+                        python3-psutil                  \
                         python3-pycrypto                \
                         python3-requests                \
                         typelib-1_0-Gst-1_0             \
@@ -159,7 +160,7 @@ usage () {
 
 check_for_packman () {
     check_pack=$(zypper repos | grep -i packman | grep -Ei "Ja|Yes")
-    if [ -z $check_pack ]; then
+    if [ -z "$check_pack" ]; then
         # packman repo not active
         echo -e "\n${RED}"
         echo -e "ACHTUNG: Das Packman Repository wurde nicht gefunden oder ist nicht aktiv!"

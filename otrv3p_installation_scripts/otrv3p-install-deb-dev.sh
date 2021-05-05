@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # otrv3p-install-deb-development.sh
-version="0.1.2"
-# 2020-07-31
+version="0.1.3"
+# 2021-05-05
 # https://raw.githubusercontent.com/einapfelbaum/otr-verwaltung3p/master/installscripts/otrv3p-install-deb.sh
 
 # BEGIN LICENSE
@@ -91,7 +91,6 @@ install_deps () {
                         mpv                             \
                         python3-appdirs                 \
                         python3-cairo                   \
-                        python3-crypto                  \
                         python3-gi-cairo                \
                         python3-gst-1.0                 \
                         python3-requests                \
